@@ -45,6 +45,10 @@ Default Project/
 
    Lalu isi `DB_PASS` dan `JWT_SECRET` di `belakang\.env`.
 
+   > Penting: simpan `.env` sebagai **UTF-8 tanpa BOM**. `godotenv` gagal
+   > membaca file yang diawali BOM, dan aplikasi akan error `dial tcp :0`
+   > karena semua konfigurasi DB kosong.
+
 2. Siapkan database (pilih salah satu):
 
    - Import dump: `mysql -u root -p smpn254opencode < sql_smpn254_sch_id.sql`
