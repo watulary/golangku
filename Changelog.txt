@@ -1,0 +1,147 @@
+24-08-2026
+PopupPengumuman.vue;
+-Target blank di hapus
+
+PublicLayout.vue
+-Fix menu mobile tentang ppid informasi-dokumen
+
+Profil/Tampil.vue
+-sudah bisa edit dan hapus foto
+
+Pengguna/Tambah.vue dan Ubah.vue
+-sudah bisa edit dan hapus foto
+
+25-08-2026
+-pola limitasi 100KB + kompres otomatis ke semua modul foto/gambar (Berita, Pengumuman, Sejarah, Visimisi, Website, Sambutan, Struktur Akademik/Tatausaha/Komite, Form Pegawai, Form Peserta Didik), plus fix retry file lock Windows yang sudah terbukti berhasil.
+-Halaman sejarah, visimisi diberi kode tiptap dan tabel agar sesuai dengan di editor tiptap
+-Tanggal pegawai dan peserta didik Kembali ke tanggal browser
+
+26-08-2026
+-Ganti nama unduh -> unggah dokumen di backend dan frontend (halaman public tetap unduh)
+-Buat halaman ppid semua kategori di publik
+-Fix lokasi -> link website
+-Buat sort anggota dan unduhan anggota ekskul
+-Modif halaman PublicLayout.vue dan Login.vue
+-Modif tiap foto bisa di klik, kelulusan, pengguna, pegawai, peserta didik, berita, pengumuman, galeri, banner
+
+27-08-2026
+-Tambah fitur filter kelas dan rombel di Arsip.vue pesertadidik dan copy foto pesertadidik dari fotosiswa ke folder fotosiswarsip
+-Buat unggah anggota untuk ekskul
+-Buat sort berdasarkan waktu keluar untuk guru dan tu yang keluar
+
+29-08-2026
+-Modifikasi tampilan dashboardhome, component, basetoast
+-Ubah tgl keluar di pegawai keluar
+tambah link di tautan penting
+-https://www.instagram.com/smpn254.jkt/
+-https://www.youtube.com/@SMPN254JAKARTA
+
+30-08-2026
+-Modif semua halaman pakai garis gradient, ubah white ke slate-200 dan buat grafik bar, garis dan donut.
+
+31-08-2026
+-Modif lagi semua halaman pakai garis gradient, ubah white ke slate-200 dan buat grafik bar, garis dan ring bersarang.
+-Warna zebra pada tabel di hilangkan
+-Buat pencarian di pengguna tambahkan berdasarkan tanggal log juga
+-Buat pesan realtime pada duplikat nuptk pengguna baik tambah atau ubah pengguna
+-Unduh SKL sudah bisa pada ekstensi IDM
+-Buat sort No Peserta dan Rerata pada Tampil.vue kelulusan
+
+01-09-2026
+-Warna zebra pada tabel di hilangkan (ekskul->anggota)
+-gray-800 jadi gray-700 pada mode light judul, nama peserta didik dan pegawai
+-Pasang lightbox di kelulusan pegawai (buat sort utk no peserta dan rerata) dan print kelulusan
+
+02-09-2026
+-Bikin modul guru wali
+-Warna link ekskul dan guru wali msh biru, belum indigo
+
+05-09-2026
+-Bikin modul buku induk
+
+06-09-2026
+-DashboardHome.vue jumlah berita dll hanya tampil jika pengguna isi/buat konten
+-tampilkan data: 10,25,50,100,500,1000
+-tambah folder bukuinduk di storage
+
+06-09-2026
+-Buku induk versi kurikulum merdeka
+
+07-09-2026
+-Fix Buku induk versi kurikulum merdeka
+
+08-09-2026
+-Ganti watermark pakai logo254.png
+
+10-09-2026
+-Ganti kelas VII jadi 7 di lembar IV
+
+12-09-2026
+-Ganti PublicLayout.vue, tambahkan Pustaka digital di tautan penting
+
+18-09-2026
+-Tidak menampilkan menu absensi di level pesertadidik (dashboard-menu.js)
+// {
+      //   title: "Absensi",
+      //   to: "/dashboard/absensi/pesertadidik",
+      //   roles: [ROLES.PESERTA_DIDIK],
+      // },
+-router index.js (depan)
+{
+        path: "absensi-HAPUS/pesertadidik",
+        name: "dashboard-absensi-pesertadidik",
+        component: AbsensiPesertaDidik,
+        meta: {
+          title: "Absensi",
+          breadcrumb: [
+            { label: "Beranda", to: "/dashboard" },
+            { label: "Absensi" },
+          ],
+          roles: ["Pesertadidik"],
+        },
+      },
+
+21-09-2026
+-Tambah kolom NIP di Tampil.vue pegawai
+-Tambah filter semua pegawai
+
+22-09-2026
+-Ubah jumlah pengumuman yang tampil di Home.vue jadi 5
+
+23-09-2026
+-Tambah kolom no surat di Mutasi.vue pesertadidik
+-Tambah pencarian untuk kolom tanggal keluar, no surat, tujuan dan alasan
+
+24-09-2026
+-Revisi mutasi / keluar jadi pindah / lainnya
+-Revisi path peserta-didik jadi pesertadidik
+-Revisi warna basetoast sama dengan dashboardheader
+-Revisi utils/date.js beberapa data arsip pesertadidik data detilnya tidak bisa muncul
+
+25-09-2026
+-Arsir/shading hari sabtu-minggu di Rekap.vue admin, staf dan pegawai
+-Tambah kolom Semester di tbl_tahunpelajaran
+-Tambah modul mapel
+-Tambah modul nilai
+
+26-09-2026
+-belum pasang catat kelas
+
+27-09-2026
+-Sudah pasang catat kelas
+-Tambah menu buku induk
+
+13-10-2026
+-Tambah menu walikelas di buku induk untuk mengisi wali kelas di kelas 7 dan 8 yang telah lewat
+
+15-10-2026
+-Update sql pesertadidik dan foto siswa di folder fotosiswa
+
+19-10-2026
+-Favicon sudah otomatis berdasarkan logo
+-Logo sekolah jika dihapus maka Kembali ke 1636812404_b39deec2f158cb789567.png
+-Sambutan, sturktur akademik, tatausaha dan komite foto default nya: 1636812404_b39deec2f158cb789567.jpg
+
+21-10-2026
+- --Pilih-- diubah jadi Pilih
+-Tautan Lainnya pada PublicLayout.vue sudah otomatis di ambil dari Website.vue

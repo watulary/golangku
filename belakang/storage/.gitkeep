@@ -1,0 +1,2 @@
+# Folder ini menyimpan file upload pengguna dan tidak di-commit.
+# Di server produksi, salin folder storage/ dari mesin pengembangan.

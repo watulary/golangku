@@ -1,0 +1,53 @@
+pengguna;
+banyak perubahan
+
+berita;
+icon di hapus
+hits
+ALTER TABLE berita MODIFY hits INT NOT NULL DEFAULT 0;
+tanggal_post	datetime			No	CURRENT_TIMESTAMP		DEFAULT_GENERATED
+
+pengumuman;
+tanggal_post	datetime			No	CURRENT_TIMESTAMP		DEFAULT_GENERATED
+
+pesertadidik;
+nis -> varchar (12)
+nisn -> varchar (12)
+nik -> varchar (16)
+no_kk -> varchar (16)
+nik_ayah -> varchar (16)
+nik_ibu -> varchar (16)
+jarak_sekolah (10)
+
+pegawai;
+nuptk -> varchar (16)
+
+tbl_ekskul;
+nuptk -> varchar (16)
+
+tbl_walikelas;
+nuptk -> varchar (16)
+
+pesertadidik_arsip
+jarak_sekolah (10)
+nis -> varchar (12)
+nisn -> varchar (12)
+
+pesertadidik_mutasi
+jarak_sekolah (10)
+nis -> varchar (12)
+nisn -> varchar (12)
+
+absensi
+nis -> varchar (12)
+
+pengguna
+nis -> varchar (12)
+nuptk -> varchar (16)
+
+kelulusan
+nis -> varchar (12)
+ket -> varchar (12)
+
+tka
+aturwaktu dihapus

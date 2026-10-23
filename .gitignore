@@ -1,0 +1,43 @@
+# ============================================================
+# Website Sekolah - .gitignore
+# ============================================================
+
+# ---- Rahasia / konfigurasi lokal ----
+belakang/.env
+*.local
+
+# ---- Dependency & hasil build frontend ----
+depan/node_modules/
+depan/dist/
+depan/dist-ssr/
+belakang/cmd/server/frontend/dist/
+
+# ---- Binary hasil build ----
+belakang/web254
+belakang/web254.exe
+*.exe
+*.dll
+
+# ---- Data upload pengguna (385+ MB, backup terpisah) ----
+belakang/storage/*
+!belakang/storage/.gitkeep
+
+# ---- Dump database besar (simpan di folder backup, bukan di git) ----
+sql_smpn254_sch_id.sql
+*.sql.gz
+*.bak
+
+# ---- Log & file sementara ----
+*.log
+npm-debug.log*
+logs/
+tmp/
+
+# ---- Editor & OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.suo
+*.swp

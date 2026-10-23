@@ -1,0 +1,326 @@
+/* ==========================================================
+   Tiptap Editor
+   ========================================================== */
+
+.tiptap {
+  min-height: 320px;
+  padding: 1rem;
+  outline: none;
+  line-height: 1.75;
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  font-size: 0.875rem;
+  color: inherit;
+  word-wrap: break-word;
+}
+
+/* ==========================================================
+   Typography
+   ========================================================== */
+
+.tiptap h1 {
+  margin: 1.5rem 0 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.tiptap h2 {
+  margin: 1.25rem 0 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.tiptap h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.tiptap p {
+  margin: 0.75rem 0;
+}
+
+.tiptap strong {
+  font-weight: 700;
+}
+
+.tiptap em {
+  font-style: italic;
+}
+
+.tiptap u {
+  text-decoration: underline;
+}
+
+.tiptap s {
+  text-decoration: line-through;
+}
+
+/* ==========================================================
+   List
+   ========================================================== */
+
+.tiptap ul,
+.tiptap ol {
+  margin: 1rem 0;
+  padding-left: 1.75rem;
+}
+
+.tiptap li {
+  margin: 0.35rem 0;
+}
+
+.tiptap li p {
+  margin: 0;
+}
+
+/* ==========================================================
+   Blockquote
+   ========================================================== */
+
+.tiptap blockquote {
+  margin: 1.5rem 0;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid #2563eb;
+  border-radius: 0.5rem;
+  background: #eff6ff;
+  font-style: italic;
+}
+
+/* ==========================================================
+   Code
+   ========================================================== */
+
+.tiptap code {
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.35rem;
+  background: #f3f4f6;
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+  font-size: 0.9em;
+}
+
+.tiptap pre {
+  margin: 1rem 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  background: #111827;
+  color: #f9fafb;
+}
+
+.tiptap pre code {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+
+/* ==========================================================
+   Horizontal Rule
+   ========================================================== */
+
+.tiptap hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid #d1d5db;
+}
+
+/* ==========================================================
+   Link
+   ========================================================== */
+
+.tiptap a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.tiptap a:hover {
+  text-decoration: none;
+}
+
+/* ==========================================================
+   Table
+   ========================================================== */
+
+.tiptap .tableWrapper {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.tiptap table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+}
+
+.tiptap th,
+.tiptap td {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid #d1d5db;
+  vertical-align: top;
+}
+
+.tiptap th {
+  background: #f9fafb;
+  font-weight: 600;
+}
+
+.tiptap th p,
+.tiptap td p {
+  margin: 0;
+}
+
+.tiptap th:empty::before,
+.tiptap td:empty::before {
+  content: "\00a0";
+}
+
+/* ==========================================================
+   Resize Column
+   ========================================================== */
+
+.tiptap .resize-cursor {
+  cursor: col-resize;
+}
+
+.tiptap .column-resize-handle {
+  position: absolute;
+  top: -1px;
+  right: -3px;
+  bottom: -1px;
+  width: 6px;
+  background: #3b82f6;
+  opacity: 0;
+  cursor: col-resize;
+  transition: opacity 0.15s ease;
+}
+
+.tiptap td:hover > .column-resize-handle,
+.tiptap th:hover > .column-resize-handle,
+.tiptap.resize-cursor .column-resize-handle {
+  opacity: 1;
+}
+
+/* ==========================================================
+   Selected Cell
+   ========================================================== */
+
+.tiptap .selectedCell {
+  background: rgba(59, 130, 246, 0.12);
+}
+
+/* ==========================================================
+   Resize Image
+   ========================================================== */
+
+.tiptap img.ProseMirror-selectednode {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.tiptap [data-resize-handle] {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #3b82f6;
+  border-radius: 50%;
+}
+
+/* dark mode */
+.dark .tiptap img.ProseMirror-selectednode {
+  outline-color: #60a5fa;
+}
+
+.dark .tiptap [data-resize-handle] {
+  background: #60a5fa;
+}
+
+/* ==========================================================
+   Align Image (resize container)
+   ========================================================== */
+
+.tiptap div[data-resize-container]:has(img[data-align="left"]) {
+  justify-content: flex-start;
+}
+
+.tiptap div[data-resize-container]:has(img[data-align="center"]) {
+  justify-content: center;
+}
+
+.tiptap div[data-resize-container]:has(img[data-align="right"]) {
+  justify-content: flex-end;
+}
+
+/* ==========================================================
+   Placeholder
+   ========================================================== */
+
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+/* ==========================================================
+   Focus
+   ========================================================== */
+
+.ProseMirror:focus {
+  outline: none;
+}
+
+/* ==========================================================
+   Dark Mode
+   ========================================================== */
+
+.dark .tiptap {
+  background: #0b0f1a;
+  color: #f1f5f9;
+}
+
+.dark .tiptap h1,
+.dark .tiptap h2,
+.dark .tiptap h3,
+.dark .tiptap p,
+.dark .tiptap li,
+.dark .tiptap strong,
+.dark .tiptap em,
+.dark .tiptap u,
+.dark .tiptap s {
+  color: #f1f5f9;
+}
+
+.dark .tiptap blockquote {
+  border-left-color: #3b82f6;
+  background: rgba(30, 58, 138, 0.12);
+}
+
+.dark .tiptap code {
+  background: #1e293b;
+}
+
+.dark .tiptap hr {
+  border-top-color: #334155;
+}
+
+.dark .tiptap a {
+  color: #60a5fa;
+}
+
+.dark .tiptap th {
+  background: #1e293b;
+}
+
+.dark .tiptap th,
+.dark .tiptap td {
+  border-color: #334155;
+}
+
+.dark .tiptap .selectedCell {
+  background: rgba(96, 165, 250, 0.18);
+}
+
+.dark .tiptap .column-resize-handle {
+  background: #60a5fa;
+}

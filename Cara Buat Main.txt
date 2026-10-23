@@ -1,0 +1,36 @@
+Ubah main.go;
+-> Letakkan sebelum func main() {
+//go:embed frontend/dist
+var frontendFS embed.FS
+
+-> Letakkan setelah app.Static("/storage", "./storage", fiber.Static{})
+// Serve frontend Vue (embedded) — HARUS PALING BAWAH
+	// karena ini catch-all untuk SPA routing (Vue Router history mode)
+	distFS, err := fs.Sub(frontendFS, "frontend/dist")
+	if err != nil {
+		log.Fatal(err)
+	}
+	app.Use("/", filesystem.New(filesystem.Config{
+		Root:         http.FS(distFS),
+		Index:        "index.html",
+		NotFoundFile: "index.html", // penting: biar refresh di route Vue (mis. /dashboard/kenaikan) tidak 404
+	}))
+
+
+Buat file main
+Paste deploy.ps1 di dalam folder belakang
+
+Jalankan -> Windows PowerShell (Windows 11)
+cd D:\sekolah\belakang
+.\deploy.ps1
+
+
+Utk windows
+Jalankan -> Windows PowerShell
+cd D:\sekolah\belakang
+go build -o web254.exe ./cmd/server
+
+
+pc skul (Windows 10);
+cd C:\Users\DapodikNew\Documents\sekolah\belakang
+powershell -ExecutionPolicy Bypass -File .\deploy.ps1

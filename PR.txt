@@ -1,0 +1,27 @@
+Menurut saya urutan pengerjaan berikutnya sebaiknya:
+✅ Audit Log Login (mencatat login berhasil/gagal, IP, user agent, waktu)
+✅ Riwayat aktivitas (Audit Log).
+
+Menurut saya ini jauh lebih cocok dengan dashboard yang sedang Anda bangun.
+Sprint 15 — Hardening & Optimasi.
+
+Isinya antara lain:
+🔒 Security Header (CSP, X-Frame-Options, X-Content-Type-Options, dll.).
+🔒 Validasi MIME upload di backend (jangan hanya ekstensi file).
+🔒 Batasi ukuran upload dan sanitasi nama file.
+🔒 Audit endpoint yang memerlukan autentikasi.
+⚡ Optimasi query yang sering dipanggil.
+⚡ Kompresi gambar (thumbnail untuk foto besar).
+⚡ Lazy loading komponen dan gambar.
+⚡ Audit Lighthouse (Performance, Accessibility, Best Practices, SEO).
+🧪 Pengujian alur penting (login, CRUD, upload, hak akses).
+
+Connection timed out -> setelah ngeprint semua rombel lalu halaman (Tampil.vue pesertadidik) di refresh
+Halaman cetak buku induk bisa di setting, misal tidak usah ada lembaran lulus/tidak lulus
+Tanggal kehadiran di buku induk bisa di seting mulai s/d kapan?
+Buatkan sort pada semua tabel
+Petunjuk pada template kelulusan, bagian foto di persingkat tapi jelas
+1E7DBF (warna tulisan di Bawah tutwuri)
+
+DocumentTextIcon
+
