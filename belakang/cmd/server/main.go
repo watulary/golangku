@@ -5,6 +5,7 @@ import (
 	"io/fs"
 	"log"
 	"net/http"
+	"strings"
 
 	"sekolah/internal/config"
 	"sekolah/internal/database"
@@ -35,6 +36,10 @@ func main() {
 
 	app := fiber.New(fiber.Config{
 		AppName: config.App.AppName,
+		// "tcp" = dual-stack (IPv4 + IPv6). Default Fiber hanya "tcp4",
+		// sehingga browser yang membuka http://localhost (resolusi ::1)
+		// harus gagal dulu sebelum fallback ke IPv4 -> terasa lambat.
+		Network: fiber.NetworkTCP,
 	})
 
 	// Middleware
@@ -50,6 +55,11 @@ func main() {
 		Format:     "[${time}] ${status} ${latency} ${ip} ${bytesSent}B ${method} ${path}\n",
 		TimeFormat: "2006-01-02 15:04:05",
 	}))
+
+	// Kebijakan cache eksplisit. Tanpa ini browser menebak sendiri
+	// (heuristic caching), sehingga index.html / API bisa memakai
+	// respons lama sampai cache dibersihkan manual.
+	app.Use(cacheControl)
 
 	// Register API Routes DULU (harus sebelum static frontend,
 	// supaya /api/... tidak "ketangkep" oleh handler frontend)
@@ -78,4 +88,29 @@ func main() {
 	log.Fatal(
 		app.Listen(":" + config.App.AppPort),
 	)
+}
+
+// cacheControl mengatur header Cache-Control sesuai jenis konten.
+func cacheControl(c *fiber.Ctx) error {
+	path := c.Path()
+
+	switch {
+	case strings.HasPrefix(path, "/api/"):
+		// Data selalu segar: jangan simpan di cache browser.
+		c.Set(fiber.HeaderCacheControl, "no-store")
+
+	case strings.HasPrefix(path, "/assets/"):
+		// Nama file sudah mengandung hash, aman di-cache selamanya.
+		c.Set(fiber.HeaderCacheControl, "public, max-age=31536000, immutable")
+
+	case strings.HasPrefix(path, "/storage/"):
+		// Foto/dokumen: cache 1 hari, tetap revalidasi via ETag.
+		c.Set(fiber.HeaderCacheControl, "public, max-age=86400")
+
+	default:
+		// index.html & route SPA: selalu revalidasi ke server.
+		c.Set(fiber.HeaderCacheControl, "no-cache")
+	}
+
+	return c.Next()
 }
